@@ -1,0 +1,79 @@
+body {
+  background-color: #585858;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.search {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.search input {
+  display: inline-block;
+  border-radius: 5px;
+  min-width: 20%;
+  max-width: 50%;
+  height: 5vh;
+  font-size: 4vh;
+  color: #f8f8f8;
+  background-color: #222;
+  font-family: "FontAwesome", "Varela Round";
+  border: 2px solid #888;
+  vertical-align: middle;
+  padding: 0 5px;
+}
+
+.search img {
+  height: 8vh;
+  vertical-align: middle;
+}
+
+.clickystuffs {
+  text-align: center;
+}
+.clickybox {
+  display: inline-block;
+  padding: 3vh;
+  border: 2px solid;
+  border-radius: 3vh;
+  margin: 0 1vh;
+  width: 11vh;
+}
+
+.clickybox span {
+  font-size: 10vh;
+}
+
+#youtube {
+  background-color: #e52d27;
+  color: #b31217;
+  border-color: #b31217;
+}
+
+#github {
+  background-color: #fff;
+  border-color: #888;
+  color: #000;
+}
+
+#reddit {
+  background-color: #eee;
+  border-color: #aaa;
+  color: #b31217;
+}
+
+#twitter {
+  background-color: #00aced;
+  border-color: #c0deed;
+  color: #0084b4;
+}
+
+#protonmail {
+  background-color: #9497ce;
+  border-color: #8984A9;
+  color: #8984A9;
+}
