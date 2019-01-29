@@ -25,6 +25,7 @@
     />
   </head>
   <body>
+    <canvas width="100" height="100" id="mazeCanvas"></canvas>
     <div class="body">
       <div class="container">
         <div style="height: 10vh;"></div>
@@ -33,6 +34,12 @@
             src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIKdmlld0JveD0iMCAwIDQ4IDQ4IgpzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA0OCA0ODs7IGZpbGw6IzAwMDAwMDsiPjxwYXRoIHN0eWxlPSJmaWxsOiNGRjNEMDA7IiBkPSJNNDQsMjRjMCwxMS05LDIwLTIwLDIwUzQsMzUsNCwyNFMxMyw0LDI0LDRTNDQsMTMsNDQsMjR6Ij48L3BhdGg+PHBhdGggc3R5bGU9ImZpbGw6I0ZGRkZGRjsiIGQ9Ik0yNiwxNi4yYy0wLjYtMC42LTEuNS0wLjktMi41LTEuMWMtMC40LTAuNS0xLTEtMS45LTEuNWMtMS42LTAuOC0zLjUtMS4yLTUuMy0wLjloLTAuNCAgYy0wLjEsMC0wLjIsMC4xLTAuNCwwLjFjMC4yLDAsMSwwLjQsMS42LDAuNmMtMC4zLDAuMi0wLjgsMC4yLTEuMSwwLjRjMCwwLDAsMC0wLjEsMEwxNS43LDE0Yy0wLjEsMC4yLTAuMiwwLjQtMC4yLDAuNSAgYzEuMy0wLjEsMy4yLDAsNC42LDAuNEMxOSwxNSwxOCwxNS4zLDE3LjMsMTUuN2MtMC41LDAuMy0xLDAuNi0xLjMsMS4xYy0xLjIsMS4zLTEuNywzLjUtMS4zLDUuOWMwLjUsMi43LDIuNCwxMS40LDMuNCwxNi4zICBsMC4zLDEuNmMwLDAsMy41LDAuNCw1LjYsMC40YzEuMiwwLDMuMiwwLjMsMy43LTAuMmMtMC4xLDAtMC42LTAuNi0wLjgtMS4xYy0wLjUtMS0xLTEuOS0xLjQtMi42Yy0xLjItMi41LTIuNS01LjktMS45LTguMSAgYzAuMS0wLjQsMC4xLTIuMSwwLjQtMi4zYzIuNi0xLjcsMi40LTAuMSwzLjUtMC44YzAuNS0wLjQsMS0wLjksMS4yLTEuNUMyOS40LDIyLjEsMjcuOCwxOCwyNiwxNi4yeiI+PC9wYXRoPjxwYXRoIHN0eWxlPSJmaWxsOiNGRkZGRkY7IiBkPSJNMjQsNDJjLTkuOSwwLTE4LTguMS0xOC0xOGMwLTkuOSw4LjEtMTgsMTgtMThjOS45LDAsMTgsOC4xLDE4LDE4QzQyLDMzLjksMzMuOSw0MiwyNCw0MnogTTI0LDggIEMxNS4yLDgsOCwxNS4yLDgsMjRzNy4yLDE2LDE2LDE2czE2LTcuMiwxNi0xNlMzMi44LDgsMjQsOHoiPjwvcGF0aD48cGF0aCBzdHlsZT0iZmlsbDojMDI3N0JEOyIgZD0iTTE5LDIxLjFjLTAuNiwwLTEuMiwwLjUtMS4yLDEuMmMwLDAuNiwwLjUsMS4yLDEuMiwxLjJjMC42LDAsMS4yLTAuNSwxLjItMS4yICBDMjAuMSwyMS43LDE5LjYsMjEuMSwxOSwyMS4xeiBNMTkuNSwyMi4yYy0wLjIsMC0wLjMtMC4xLTAuMy0wLjNjMC0wLjIsMC4xLTAuMywwLjMtMC4zczAuMywwLjEsMC4zLDAuMyAgQzE5LjgsMjIuMSwxOS42LDIyLjIsMTkuNSwyMi4yeiBNMjYuOCwyMC42Yy0wLjYsMC0xLDAuNS0xLDFjMCwwLjYsMC41LDEsMSwxYzAuNiwwLDEtMC41LDEtMVMyNy4zLDIwLjYsMjYuOCwyMC42eiBNMjcuMiwyMS41ICBjLTAuMSwwLTAuMy0wLjEtMC4zLTAuM2MwLTAuMSwwLjEtMC4zLDAuMy0wLjNjMC4xLDAsMC4zLDAuMSwwLjMsMC4zUzI3LjQsMjEuNSwyNy4yLDIxLjV6IE0xOS4zLDE4LjljMCwwLTAuOS0wLjQtMS43LDAuMSAgYy0wLjksMC41LTAuOCwxLjEtMC44LDEuMXMtMC41LTEsMC44LTEuNUMxOC43LDE4LjEsMTkuMywxOC45LDE5LjMsMTguOSBNMjcuNCwxOC44YzAsMC0wLjYtMC40LTEuMS0wLjRjLTEsMC0xLjMsMC41LTEuMywwLjUgIHMwLjItMS4xLDEuNS0wLjlDMjcuMSwxOC4yLDI3LjQsMTguOCwyNy40LDE4LjgiPjwvcGF0aD48cGF0aCBzdHlsZT0iZmlsbDojOEJDMzRBOyIgZD0iTTIzLjMsMzUuN2MwLDAtNC4zLTIuMy00LjQtMS40Yy0wLjEsMC45LDAsNC43LDAuNSw1czQuMS0xLjksNC4xLTEuOUwyMy4zLDM1Ljd6IE0yNSwzNS42ICBjMCwwLDIuOS0yLjIsMy42LTIuMWMwLjYsMC4xLDAuOCw0LjcsMC4yLDQuOWMtMC42LDAuMi0zLjktMS4yLTMuOS0xLjJMMjUsMzUuNnoiPjwvcGF0aD48cGF0aCBzdHlsZT0iZmlsbDojNjg5RjM4OyIgZD0iTTIyLjUsMzUuN2MwLDEuNS0wLjIsMi4xLDAuNCwyLjNjMC42LDAuMSwxLjksMCwyLjMtMC4zYzAuNC0wLjMsMC4xLTIuMi0wLjEtMi42ICBDMjUsMzQuOCwyMi41LDM1LjEsMjIuNSwzNS43Ij48L3BhdGg+PHBhdGggc3R5bGU9ImZpbGw6I0ZGQ0EyODsiIGQ9Ik0yMi4zLDI2LjhjMC4xLTAuNywyLTIuMSwzLjMtMi4yYzEuMy0wLjEsMS43LTAuMSwyLjgtMC4zYzEuMS0wLjMsMy45LTEsNC43LTEuMyAgYzAuOC0wLjQsNC4xLDAuMiwxLjgsMS41Yy0xLDAuNi0zLjcsMS42LTUuNywyLjJjLTEuOSwwLjYtMy4xLTAuNi0zLjgsMC40Yy0wLjUsMC44LTAuMSwxLjgsMi4yLDJjMy4xLDAuMyw2LjItMS40LDYuNS0wLjUgIGMwLjMsMC45LTIuNywyLTQuNiwyLjFjLTEuOCwwLTUuNi0xLjItNi4xLTEuNkMyMi45LDI4LjcsMjIuMiwyNy44LDIyLjMsMjYuOCI+PC9wYXRoPjwvc3ZnPg=="
           /><input autofocus type="text" placeholder="" />
         </div>
+      </div>
+      <div class="container">
+        <button id="solve" type="button">Solve</button>
+        <button id="generate" type="button">Generate</button>
+        <button id="clear" type="button">Clear</button>
+        <input id="size" type="text" placeholder="Size: 100" />
       </div>
       <div style="height: 10vh;"></div>
       <div class="container clickystuffs">
@@ -61,7 +68,8 @@
         ></a>
       </div>
     </div>
-    <script src="js/jquery.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/Maze.js"></script>
     <script>
       $(".search input[type=text]").on("keypress", function(e) {
         if (e.which == 13) {
