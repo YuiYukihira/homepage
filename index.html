@@ -36,10 +36,17 @@
         </div>
       </div>
       <div class="container">
-        <button id="solve" type="button">Solve</button>
-        <button id="generate" type="button">Generate</button>
-        <button id="clear" type="button">Clear</button>
-        <input id="size" type="text" placeholder="Size: 100" />
+        <select id="solveDrop">
+          <option value="djikstra">Djikstra</option>
+        </select>
+        <button id="solveBtn" type="button">Solve</button>
+        <select id="generateDrop">
+          <option value="maze">Maze</option>
+          <option value="particle">Particle</option>
+        </select>
+        <button id="generateBtn" type="button">Generate</button>
+        <button id="clearBtn" type="button">Clear</button>
+        <input id="sizeInput" type="text" placeholder="Size: 100" />
       </div>
       <div style="height: 10vh;"></div>
       <div class="container clickystuffs">
@@ -69,7 +76,12 @@
       </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="js/Maze.js"></script>
+    <script type="text/javascript" src="js/utils.js"></script>
+    <script type="text/javascript" src="js/PriorityQueue.js"></script>
+    <script type="text/javascript" src="js/pathfinding/BFS.js"></script>
+    <script type="text/javascript" src="js/pathfinding/Djikstra.js"></script>
+    <script type="text/javascript" src="js/terrain/Maze.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
     <script>
       $(".search input[type=text]").on("keypress", function(e) {
         if (e.which == 13) {
